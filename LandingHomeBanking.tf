@@ -46,12 +46,12 @@ resource "azurerm_virtual_network" "vn" {
   name                = "${var.area}${local.production-short}VirtualNetwork"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  address_space       = ["172.19.0.0/22"]
+  address_space       = ["172.19.0.0/22"]   # allowed ips 172.19.0.1 - 172.19.3.254
 #  dns_servers         = ["10.0.0.4", "10.0.0.5"]
 
   subnet {
     name           = "subnetDmz"
-    address_prefix = "172.19.2.0/24"
+    address_prefix = "172.19.2.0/24"  
     security_group = azurerm_network_security_group.secgroup.id
   }
 
